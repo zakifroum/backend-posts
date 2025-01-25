@@ -1,0 +1,45 @@
+<mat-toolbar color="primary">
+  <button
+    mat-icon-button
+    class="example-icon"
+    aria-label="Example icon-button with menu icon"
+  >
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span><a routerLink="/">My Applications</a></span>
+  <span class="spacer"></span>
+  <ul>
+    <li *ngIf="userAuthService">
+      {{ userAuthService }}
+      <a mat-button routerLink="/create" routerLinkActive="active"
+        >Nouveau Post</a
+      >
+    </li>
+    <li *ngIf="!userAuthService">
+      {{ userAuthService }}
+      <a mat-button routerLink="/login" routerLinkActive="active">Login</a>
+    </li>
+    <li *ngIf="!userAuthService">
+      <a mat-button routerLink="/signup" routerLinkActive="active">Signup</a>
+    </li>
+    <li *ngIf="userAuthService">
+      <button mat-button (click)="Onloginout()">Signout</button>
+    </li>
+    <!--<li><a routerLink="/second-component" routerLinkActive="active" ariaCurrentWhenActive="page">Second Component</a></li>-->
+  </ul>
+  <span class="example-spacer"></span>
+  <button
+    mat-icon-button
+    class="example-icon favorite-icon"
+    aria-label="Example icon-button with heart icon"
+  >
+    <mat-icon>favorite</mat-icon>
+  </button>
+  <button
+    mat-icon-button
+    class="example-icon"
+    aria-label="Example icon-button with share icon"
+  >
+    <mat-icon>share</mat-icon>
+  </button>
+</mat-toolbar>

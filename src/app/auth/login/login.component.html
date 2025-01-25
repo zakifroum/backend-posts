@@ -1,0 +1,41 @@
+<mat-card>
+  <mat-spinner *ngIf="IsLoading"></mat-spinner>
+  <form
+    (submit)="OnLogin(LoginForm)"
+    *ngIf="!IsLoading"
+    class="example-form"
+    #LoginForm="ngForm"
+  >
+    <mat-form-field class="Titre">
+      <mat-label>E-Mail</mat-label>
+      <input
+        matInput
+        type="email"
+        name="email"
+        required
+        ngModel
+        placeholder="E-Mail"
+        #emailInput="ngModel"
+      />
+      <mat-error *ngIf="emailInput.invalid"
+        >Remplir Address Email Svp</mat-error
+      >
+    </mat-form-field>
+    <mat-form-field class="content">
+      <mat-label>Password</mat-label>
+      <input
+        matInput
+        type="password"
+        name="password"
+        required
+        ngModel
+        placeholder="Password"
+        #passwordInput="ngModel"
+      />
+      <mat-error *ngIf="passwordInput.invalid"
+        >Remplir Mote de Passe Svp</mat-error
+      >
+    </mat-form-field>
+    <button mat-raised-button *ngIf="!IsLoading" type="submit">Login</button>
+  </form>
+</mat-card>

@@ -1,0 +1,29 @@
+<mat-spinner *ngIf="IsLoading"></mat-spinner>
+<mat-accordion multi="true" *ngIf="posts.length > 0 && !IsLoading">
+  <mat-expansion-panel *ngFor="let post of posts">
+    <mat-expansion-panel-header>
+      <mat-panel-title> {{ post.title }} </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div class="post-image">
+      <img [src]="post.PathImage" [alt]="post.title" />
+    </div>
+    <p>{{ post.content }}</p>
+    <mat-action-row *ngIf="IsAuthValidService && userId === post.creator">
+      <button mat-button [routerLink]="['/edit', post.id]">Modifier</button>
+      <button mat-button color="warn" (click)="OnDeletePost(post.id!)">
+        Suprimer
+      </button>
+    </mat-action-row>
+  </mat-expansion-panel>
+</mat-accordion>
+<mat-paginator
+  [length]="TotalPost"
+  [pageSize]="NbrPostPrPage"
+  [pageSizeOptions]="pageSizeOptions"
+  (page)="OnChangePage($event)"
+  aria-label="Select page"
+  *ngIf="posts.length > 0"
+></mat-paginator>
+<p class="message" *ngIf="posts.length <= 0 && !IsLoading">
+  vide le panier d'afficher les articles
+</p>

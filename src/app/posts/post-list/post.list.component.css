@@ -1,0 +1,27 @@
+:host {
+  display: block;
+  margin-top: 1rem;
+}
+mat-spinner {
+  margin: auto;
+  padding: auto;
+}
+.message {
+  text-align: center;
+  font-family: fantasy;
+  font-weight: bolder;
+  width: 100%;
+}
+.post-image {
+  width: 100%;
+}
+.post-image img {
+  width: 100%;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.6);
+  border-radius: 1rem;
+}
+mat-paginator {
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.6);
+  border-radius: 1rem;
+  margin-top: 1rems;
+}

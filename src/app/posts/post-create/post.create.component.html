@@ -1,0 +1,53 @@
+<mat-card>
+  <mat-spinner *ngIf="IsLoading"></mat-spinner>
+  <form
+    class="example-form"
+    [formGroup]="form"
+    (submit)="onAddPost()"
+    *ngIf="!IsLoading"
+  >
+    <mat-form-field class="Titre">
+      <mat-label>Titre</mat-label>
+      <!--<input
+        type="text"
+        matInput
+        [ngModel]="post?.title"
+        name="title"
+        required
+        #title="ngModel"
+      />-->
+      <input type="text" matInput formControlName="title" />
+      <mat-error *ngIf="form.get('title')?.invalid"
+        >Remplir le contenu de Titre Svp</mat-error
+      >
+    </mat-form-field>
+    <div>
+      <button mat-stroked-button type="button" (click)="fileUpload.click()">
+        Upload Image
+      </button>
+      <input type="file" #fileUpload (change)="OnUploadImage($event)" />
+    </div>
+    <div
+      class="image-preview"
+      *ngIf="ImagePreviw !== '' && ImagePreviw && form.get('image')?.valid"
+    >
+      <img [src]="ImagePreviw" [alt]="form.value.title" />
+    </div>
+    <mat-form-field class="content">
+      <mat-label>Description</mat-label>
+      <!--<textarea
+        matInput
+        rows="8"
+        [ngModel]="post?.content"
+        name="content"
+        required
+        #content="ngModel"
+      ></textarea>-->
+      <textarea matInput rows="8" formControlName="content"></textarea>
+      <mat-error *ngIf="form.get('content')?.invalid"
+        >Remplir le contenu de Description Svp</mat-error
+      >
+    </mat-form-field>
+    <button mat-raised-button type="submit">Save Demande</button>
+  </form>
+</mat-card>
